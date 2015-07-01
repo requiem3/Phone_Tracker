@@ -1,0 +1,12 @@
+package com.requiem.requiemtracker;
+
+import android.location.LocationManager;
+import android.location.GpsStatus.Listener;
+
+public class Tracker {
+	private LocationManager mLManager;
+	
+	public Tracker() {
+		
+	}
+}

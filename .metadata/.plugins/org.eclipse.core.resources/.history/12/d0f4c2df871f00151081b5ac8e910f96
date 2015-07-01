@@ -1,0 +1,5 @@
+package com.requiem.requiemtracker;
+
+public @interface Tracker {
+
+}
