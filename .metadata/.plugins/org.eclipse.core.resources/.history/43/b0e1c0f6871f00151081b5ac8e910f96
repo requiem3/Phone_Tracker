@@ -1,7 +1,0 @@
-package com.requiem.requiemtracker;
-
-import android.location.LocationManager;
-
-public @interface Tracker {
-	private LocationManager lManager;
-}

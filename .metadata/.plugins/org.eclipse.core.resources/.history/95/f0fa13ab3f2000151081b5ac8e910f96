@@ -1,0 +1,7 @@
+package tools;
+
+import android.telephony.SmsManager;
+
+public class Messaging {
+
+}
