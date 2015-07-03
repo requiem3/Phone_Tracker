@@ -1,19 +1,44 @@
 package tools;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ResolveInfo;
 import android.telephony.SmsManager;
+import android.util.Log;
 
 public class Messaging {
-	private SmsManager smsManager;
 	private Activity activity;
 	
 	public Messaging(Activity activity) {
 		this.activity = activity;
-		smsManager = SmsManager.getDefault();
-		
-		smsManager.sendTextMessage("kyle.heitman@uconn.edu", null, "hi", null, null);
+		initOpenIntent("gmail");
 	}
 	
-	
+	private void initOpenIntent(String type) {
+	    boolean found = false;
+	    Intent share = new Intent(android.content.Intent.ACTION_SEND);
+	    share.setType("message/rfc822");
+
+	    List<ResolveInfo> resInfo = activity.getPackageManager().queryIntentActivities(share, 0);
+	    if (!resInfo.isEmpty()){
+	        for (ResolveInfo info : resInfo) {
+	            if (info.activityInfo.packageName.toLowerCase().contains(type) || 
+	                    info.activityInfo.name.toLowerCase().contains(type) ) {
+	            	share.putExtra(Intent.EXTRA_EMAIL, new String[]{"kyle.heitman@uconn.edu"});
+	                share.putExtra(Intent.EXTRA_SUBJECT,  "subject");
+	                share.putExtra(Intent.EXTRA_TEXT,     "your text");
+	                share.setPackage(info.activityInfo.packageName);
+	                found = true;
+	                break;
+	            }
+	        }
+	        if (!found)
+	            return;
+
+	        activity.startActivity(Intent.createChooser(share, "Select"));
+	    }
+	}
 }

@@ -1,0 +1,17 @@
+package tools;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.telephony.SmsManager;
+import android.util.Log;
+
+public class Messaging {
+	
+	public Messaging(Activity activity) {
+		SmsManager smsManager = SmsManager.getDefault();
+		smsManager.sendTextMessage("kyle.heitman@uconn.edu", null, "sms message", null, null);
+	}
+	
+	
+}

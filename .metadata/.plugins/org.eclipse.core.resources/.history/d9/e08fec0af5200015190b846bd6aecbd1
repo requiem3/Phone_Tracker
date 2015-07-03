@@ -1,0 +1,21 @@
+package tools;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.telephony.SmsManager;
+
+public class Messaging {
+	
+	public Messaging() {
+		Intent mailIntent = new Intent(Intent.ACTION_SEND);
+		mailIntent.setType("text/Message");
+		mailIntent.putExtra(Intent.EXTRA_EMAIL  , "kyle.heitman@uconn.edu");
+		mailIntent.putExtra(Intent.EXTRA_SUBJECT, "Test Email");
+		mailIntent.putExtra(Intent.EXTRA_TEXT   , "Hi!  This is a test!");
+		
+		activity.startActivity(Intent.createChooser(mailIntent, "Send mail..."));
+	}
+	
+	
+}

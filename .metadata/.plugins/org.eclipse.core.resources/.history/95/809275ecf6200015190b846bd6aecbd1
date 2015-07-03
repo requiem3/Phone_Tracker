@@ -1,0 +1,25 @@
+package tools;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.telephony.SmsManager;
+import android.util.Log;
+
+public class Messaging {
+	
+	public Messaging(Activity activity) {
+		Intent i = new Intent(Intent.ACTION_SEND);
+		i.setType("message/rfc822");
+		i.putExtra(Intent.EXTRA_EMAIL, new String[]{"email"});
+		i.putExtra(Intent.EXTRA_SUBJECT, "test subject");
+		i.putExtra(Intent.EXTRA_TEXT, "test body");
+		try {
+		    activity.startActivity(Intent.createChooser(i, "Send mail..."));
+		} catch (android.content.ActivityNotFoundException ex) {
+		    Log.i("MYSHIT", "no email client installed");
+		}
+	}
+	
+	
+}

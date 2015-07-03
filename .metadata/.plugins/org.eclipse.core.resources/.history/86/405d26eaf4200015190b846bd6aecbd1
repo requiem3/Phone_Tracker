@@ -1,0 +1,20 @@
+package tools;
+
+import android.app.Activity;
+import android.content.Context;
+import android.telephony.SmsManager;
+
+public class Messaging {
+	private SmsManager smsManager;
+	private Activity activity;
+	
+	public Messaging() {
+		Intent mailIntent = new Intent(Intent.ACTION_SEND);
+		mailIntent.setType("text/Message");
+		mailIntent.putExtra(Intent.EXTRA_EMAIL  , new String[]{address});
+		mailIntent.putExtra(Intent.EXTRA_SUBJECT, "Test Email");
+		mailIntent.putExtra(Intent.EXTRA_TEXT   , "Hi!  This is a test!");
+	}
+	
+	
+}
